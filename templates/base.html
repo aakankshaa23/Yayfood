@@ -1,15 +1,153 @@
 <!DOCTYPE html>
-{% load static %}
+{% load staticfiles %}
 <html>
 	<head>
 		<title>{% block title %}Dainty Diet.com{% endblock title %}</title>
 		{% include 'snippets/css.html' %}
+		<link rel="stylesheet" href="{% static 'index.css' %}">
+		<style>
+
+		body{
+			
+		}
+		a{
+			color: inherit;
+			text-decoration: none;
+		}
+		a:hover{
+			text-decoration: none;
+		}
+		nav{
+    display: flex;
+    align-items: center;
+    height: 7.5vh;
+    position: fixed;
+    box-shadow: 0 0 1em black;
+    background-color: pink;
+    /* color: white; */
+	border-bottom: 0.25em solid #412234;
+	padding: 0 2%;
+
+}
+nav ul{
+    height: 75%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+	padding: 0;
+	margin: 0;
+    margin-left: 25px;
+}
+nav ul li{
+	height: 100%;
+}
+nav ul a{
+    height: 100%;
+    padding: 0 2vw;
+    margin-right: 12px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.75;
+    border-radius: 8px;
+}
+nav ul a:hover{
+    opacity: 1;
+    background-color: #0e2ddd;
+    color: white;
+}
+.navbar-brand{
+	font-size: 1.25em;
+	text-align: center;
+}
+.navbar-brand:hover{
+    /* font-size: 120%; */
+}
+.ml-auto{
+	margin-left: auto;
+}
+.muted{
+	opacity: 0.75;
+	font-size: 0.75em;
+}
+
+
+.button{
+    position: relative;
+    padding: 12px 0;
+    margin-right: 12px;
+    overflow: hidden;
+	border-radius: 0;
+	background-color: transparent;
+}
+.fill{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 0;
+    transition: all 0.2s ease;
+    z-index: 0;
+}
+.button-text{
+    position: relative;
+    padding: 0 24px;
+    z-index: 2;
+}
+.button:hover .button-text{
+    color: white;
+}
+.primary-button{
+    border: 2px solid #0e34a0;
+    color: #0e34a0;
+}
+.primary-button .fill{
+    background-color: #0e34a0;
+}
+.danger-button{
+    color: red;
+    background-color: white;
+    border: 2px solid red;
+}
+.danger-button .fill{
+    background-color: red;
+}
+.success-button{
+    color: #1b5e20;
+    border: 2px solid #1b5e20;
+}
+.success-button .fill{
+    background-color: #1b5e20;
+}
+.secondary-button{
+    padding: 6px 0;
+    margin-right: 12px;
+}
+.button:hover .fill{
+    top: 0;
+    height: 100%;
+}
+.ingredient{
+	margin-left: 12px;
+	border: 2px solid #1b5e20;
+	padding: 6px 6px;
+}
+.card{
+    transition:all 0.25s ease-in-out;
+}
+.card:hover{
+    box-shadow: 0 3px 16px black;
+}
+		
+		</style>
+		{% block css %}
+		{% endblock %}
 	</head>
 	
 	<body>
 		
 		<nav class="navbar">
-			<a href="{% url 'home' %}" class="custom-navbar">Dainty Diet</a>
+			<a href="{% url 'home' %}" class="navbar-brand">Dainty Diet</a>
 			<ul>
 				<li><a href="{% url 'about' %}">About</a></li>
 				<li><a href="{% url 'contact' %}">Contact</a></li>
@@ -22,10 +160,11 @@
 			<li><a href="{% url 'menus:list' %}">Menu</a></li>
 			{% else %}
 			<li><a href="{% url 'login' %}">Login</a></li>
+			<li><a href="{% url 'register' %}">Register</a></li>
 			{% endif %}
 			</ul>
 		</nav>
-	<div class="container">
+	<div class="container" style="margin-top: 2.5vh;">
 		{% block content %}
 		{% endblock content %}
 	</div>

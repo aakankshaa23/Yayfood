@@ -2,20 +2,19 @@
 {%block title %} {{user.username}} |{{ block.super }}{%endblock%}
 
 {% block content %}
-<h1> {{user.username}}</h1>
+<h1>@{{user.username}}</h1>
 <p>{% include 'snippets/follow_form.html' with username=user.username is_following=is_following %}</p>
 <hr/>
 <form class="form" method="GET" action=".">
 	<input type="TEXT" placeholder="Search.." name="q" value="{{request.GET.q}}">
-	<button class="btn btn-default" type="submit">Search</button>
+	<button type="submit" class="button success-button secondary-button"><span class="fill"></span><span class="button-text">Search</span></button>
 </form>
 <!-- {{user.restaurantlocation_set.all }}
 {{user.item_set.all}} -->
 {% if locations.exists %}
 {% for rest in locations.all %}
 <div class="row">
-<div class="col-sm-12">
-	<div class="thumbnail">
+	<div class="card mt-3 py-2 col-12">
 		<h4><b>{{rest.title}}</b></h4> 
 		<p> <a href="{{request.path}}?q={{rest.location}}">{{rest.location}}</a> |<a href="{{request.path}}?q={{rest.category}}">{{rest.category}}</a></p>
 	{% if rest.item_set.exists %}
@@ -32,7 +31,6 @@
 {% else %}
 <p class='lead'>No Items Found</p>
 {% endif %}
-</div>
 </div>
 </div>
 {% endfor %}

@@ -1,12 +1,30 @@
 {% extends 'base.html' %}
 {%block title %}Restaurants |{{ block.super }}{%endblock%}
-
+{% block css %}
+<style>
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h2{
+    border-bottom: 2px solid #0e34a0;
+}
+</style>
+{% endblock %}
 {% block content %}
-<h1>Restaurants <small> <a href="{% url 'restaurants-create' %}">Add</small></h1>
+<div class="header">
+    <h1>Restaurants</h1>
+    <a class="button primary-button" href=<a href="{% url 'restaurants-create' %}"><span class="fill"></span><span class="button-text">Add</span></a>
+</div>
 {% for obj in object_list %}
-<a href="{{ obj.get_absolute_url }}">{{obj}}</a>
-<li>{{obj.name}} {{obj.location}} {{obj.category}} {{obj.timestamp}} {{obj.updated}}</li>
+<div class="card col-12 py-2 mt-3">
+<h2 class="py-2"><a href="{{ obj.get_absolute_url }}">{{obj.name}}</a></h2>
+<h4><span class="muted">Located at:</span> {{obj.location}}</h4>
+<h5>{{obj.category}} Restaurant</h5> 
+<p>Since: {{obj.timestamp.year}}</p>
 {% empty %}
 <li> <a href="% url 'restaurants-create' %}"> Add One</li>
+</div>
 {% endfor %}
 {% endblock %}

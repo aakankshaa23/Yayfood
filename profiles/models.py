@@ -15,8 +15,7 @@ class Profile(models.Model):
 		return self.user.username
 
 def post_save_user_receiver(sender,instance,created,*args,**kwargs):
-	profile,is_created=Profile.objects
-	get_or_create(user=instance)
+	profile,is_created= Profile.objects.get_or_create(user=instance)
 
 post_save.connect(post_save_user_receiver,sender=User)
 
