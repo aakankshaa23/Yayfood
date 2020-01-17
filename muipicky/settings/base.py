@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import django_heroku
 
 
 
@@ -131,4 +132,5 @@ STATICFILES_STORAGE='whitenoise.django.GzipManifestStaticFilesStorage'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/login/'
+django_heroku.settings(local())
 
