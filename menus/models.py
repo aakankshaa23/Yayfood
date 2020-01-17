@@ -1,11 +1,11 @@
 from django.db import models
 from django.conf import settings
 from restaurants.models import RestaurantLocation
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 class Item(models.Model):
-	user=models.ForeignKey(settings.AUTH_USER_MODEL)
-	restaurants=models.ForeignKey(RestaurantLocation)
+	user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	restaurants=models.ForeignKey(RestaurantLocation, on_delete=models.CASCADE)
 	name=models.CharField(max_length=120)
 	contents=models.TextField(help_text='separate each item by comma')
 	excludes=models.TextField(blank=True,null=True,help_text='separate each item by comma')
