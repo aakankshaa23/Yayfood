@@ -15,7 +15,7 @@ h2{
 {% block content %}
 <div class="header">
     <h1>Restaurants</h1>
-    <a class="button primary-button" href=<a href="{% url 'restaurants-create' %}"><span class="fill"></span><span class="button-text">Add</span></a>
+    <a class="button primary-button" href="{% url 'restaurants-create' %}"><span class="fill"></span><span class="button-text">Add</span></a>
 </div>
 {% for obj in object_list %}
 <div class="card col-12 py-2 mt-3">
