@@ -11,6 +11,6 @@ psycopg2==2.8.4
 psycopg2-binary==2.8.4
 pytz==2019.3
 requests==2.19.1
-urllib3==1.23
+urllib3==1.24.2
 whitenoise==5.0.1
 whitespace==1.0.0b8
